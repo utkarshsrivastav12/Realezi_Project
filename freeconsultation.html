@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+        .form-container {
+            background-color: #e6e9ff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #333;
+        }
+        .form-container input,
+        .form-container select {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .form-container input[type="checkbox"] {
+            width: auto;
+            margin-right: 5px;
+        }
+        .form-container label {
+            font-size: 14px;
+            color: #666;
+            display: flex;
+            align-items: center;
+        }
+        .form-container .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #d3d3d3;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: not-allowed;
+        }
+        .form-container .submit-btn:enabled {
+            background-color: #4CAF50;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Please share your details</h2>
+    <form>
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="tel" name="mobile" placeholder="Enter mobile number" required>
+        <input type="email" name="email" placeholder="Email ID" required>
+        <select name="property_type" required>
+            <option value="" disabled selected>Property Type</option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
+        </select>
+        <select name="budget" required>
+            <option value="" disabled selected>Budget</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        <label>
+            <input type="checkbox" name="agree" required>
+            By submitting this form, I agree to accept and agree to Realezi's T&C
+        </label>
+        <button type="submit" class="submit-btn" disabled>Submit</button>
+    </form>
+</div>
+
+<script>
+    const form = document.querySelector('form');
+    const submitBtn = document.querySelector('.submit-btn');
+    const checkbox = document.querySelector('input[name="agree"]');
+
+    checkbox.addEventListener('change', () => {
+        submitBtn.disabled = !checkbox.checked;
+    });
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // You can add form submission logic here
+        alert('Form submitted!');
+    });
+</script>
+
+</body>
+</html>
